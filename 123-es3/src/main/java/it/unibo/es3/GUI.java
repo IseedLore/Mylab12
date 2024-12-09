@@ -4,12 +4,11 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 public class GUI extends JFrame {
     
     private final List<JButton> cells = new ArrayList<>();
-    
+
     public GUI(int width) {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(70*width, 70*width);
