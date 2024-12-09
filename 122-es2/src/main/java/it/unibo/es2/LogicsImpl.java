@@ -1,16 +1,12 @@
 package it.unibo.es2;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import javax.swing.JButton;
 
 public class LogicsImpl implements Logics {
 
     private final int size;
-    private final Map< Pair<Integer, Integer>, String> textOfButtons = new HashMap<>();
+    private final Map<Pair<Integer, Integer>, String> textOfButtons = new HashMap<>();
 
 	public LogicsImpl(int size) {
 		this.size = size;
@@ -37,31 +33,35 @@ public class LogicsImpl implements Logics {
 
         
         String value = "*";
-        List<Integer> tmp = new ArrayList<>();
+        Integer tmp;
         //Coloumn  
         for (int i=0; i<size; i++){
+            tmp = 0;
             for(int j=0; j<size; j++){
                 if(textOfButtons.get(new Pair<>(i, j)) == value){
-                    tmp.add(j, 0);
+                    tmp++;
                 } else{
-                    tmp.add(j, 1);
+                    tmp--;
                 }
             }           
-            return tmp.contains(0);
+            if(tmp==size){
+                return true;
+            }
         }        
-        tmp.clear();
-        //Line
+        //Line  
         for (int i=0; i<size; i++){
+            tmp = 0;
             for(int j=0; j<size; j++){
                 if(textOfButtons.get(new Pair<>(j, i)) == value){
-                    tmp.add(i, 0);
+                    tmp++;
                 } else{
-                    tmp.add(i, 1);
+                    tmp--;
                 }
             }           
-            return tmp.contains(0);
+            if(tmp==size){
+                return true;
+            }
         } 
-        
         return false;
         
     }
